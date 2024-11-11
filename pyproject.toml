@@ -1,0 +1,43 @@
+[project]
+name = "grpc-demo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.4",
+    "grpcio-tools>=1.67.1",
+    "pydantic>=2.9.2",
+    "pydantic-settings>=2.6.1",
+    "uvicorn[standard]>=0.32.0",
+    "sqlalchemy>=2.0.36",
+    "psycopg2-binary>=2.9.10",
+    "dependency-injector>=4.43.0",
+]
+
+[dependency-groups]
+dev = ["mypy>=1.13.0", "ruff>=0.7.3", "types-protobuf>=5.28.3.20241030"]
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    # Generated protobuf files
+    "*_pb2.py",
+    "*_pb2_grpc.py",
+]
+
+line-length = 120
+
+[tool.ruff.lint]
+extend-select = ["I", "Q", "UP"]
+
+[tool.ruff.format]
+line-ending = "lf"
+
+[tool.mypy]
+exclude = [".venv", "proto/"]
+ignore_missing_imports = true

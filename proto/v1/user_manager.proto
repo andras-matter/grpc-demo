@@ -1,0 +1,21 @@
+syntax = "proto3";
+package user_manager.v1;
+
+import "google/protobuf/timestamp.proto";
+
+service UserManager {
+    rpc CreateUser (CreateUserRequest) returns (User) {}
+}
+
+message User {
+    bytes id = 1;
+    string name = 2;
+    int32 age = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
+  }
+  
+  message CreateUserRequest {
+    string name = 1;
+    int32 age = 2;
+  }
